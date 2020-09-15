@@ -69,5 +69,9 @@ namespace quick {
         auto Meshes::getBSTL() -> QString {
             return this->makeDataPath("b.stl");
         }
+
+        auto Meshes::getUnstructuredGrid() -> QString {
+            return this->makeDataPath("unstructuredGrid.vtk");
+        }
     }
 }

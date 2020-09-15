@@ -22,6 +22,8 @@ namespace quick {
         public:
             Object(Type);
             auto getType() -> Type;
+            //fork dev.
+            virtual auto init() -> void {}
         };
     }
 }

@@ -20,5 +20,12 @@ namespace quick {
         auto AbstractWidget::getEnabled() -> bool {
             return this->m_vtkObject->GetEnabled();
         }
+
+        auto AbstractWidget::init() -> void {
+            m_vtkObject->CreateDefaultRepresentation();
+            m_vtkObject->SetManagesCursor(true);
+            m_vtkObject->SetPickingManaged(true);
+            //m_vtkObject->On();
+        }
     }
 }

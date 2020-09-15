@@ -22,6 +22,8 @@ namespace quick {
             auto setEnabled(bool) -> void;
             auto getEnabled() -> bool;
             auto getVtkObject() -> vtkSmartPointer<vtkAbstractWidget>;
+            //fork dev.
+            auto init() -> void;
         signals:
             void enabledChanged();
         };

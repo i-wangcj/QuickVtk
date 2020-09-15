@@ -4,6 +4,8 @@
 #include "quickVtkFboRenderer.hpp"
 #include "quickVtkAbstractWidget.hpp"
 #include "quickVtkFboOffscreenWindow.hpp"
+#include "quickVtkOrientationMarkerWidget.h"
+#include "quickVtkActor2D.hpp"
 
 #include <QOpenGLFunctions>
 #include <QQuickFramebufferObject>
@@ -40,13 +42,26 @@ namespace quick {
                     this->m_renderer->AddActor(prop->getVtkObject());
                 }
                 else if (object->getType() == Object::Type::Widget) {
-                    auto widget = reinterpret_cast<AbstractWidget*>(object);
-                    auto vtkWidget = widget->getVtkObject();
-                    vtkWidget->CreateDefaultRepresentation();
-                    vtkWidget->SetInteractor(this->GetRenderWindow()->GetInteractor());
-                    vtkWidget->SetManagesCursor(true);
-                    vtkWidget->SetPickingManaged(true);
-                    vtkWidget->On();
+                    auto widget = dynamic_cast<AbstractWidget*>(object);
+                    if (widget) {
+                        widget->init();
+                        auto vtkWidget = widget->getVtkObject();
+                        if (vtkWidget) {
+                            vtkWidget->SetInteractor(this->GetRenderWindow()->GetInteractor());
+                            vtkWidget->On();
+                        }
+                    }
+                    auto orientationMarkerWdiget = dynamic_cast<OrientationMarkerWidget*>(object);
+                    if (orientationMarkerWdiget) {
+                        orientationMarkerWdiget->init();
+                        auto vtkWidget = orientationMarkerWdiget->getVtkObject();
+                        if (vtkWidget) {
+                            vtkWidget->SetInteractor(this->GetRenderWindow()->GetInteractor());
+                            vtkWidget->SetViewport(0.0, 0.0, 0.4, 0.4);
+                            vtkWidget->On();
+                            vtkWidget->InteractiveOff();
+                        }
+                    }
                 }
             }
 

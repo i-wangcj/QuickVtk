@@ -19,6 +19,7 @@ namespace quick {
             Q_PROPERTY(QString aSTL READ getASTL CONSTANT);
             Q_PROPERTY(QString bOBJ READ getBOBJ CONSTANT);
             Q_PROPERTY(QString bSTL READ getBSTL CONSTANT);
+            Q_PROPERTY(QString unstructuredGrid READ getUnstructuredGrid CONSTANT);
         private:
             auto makeDataPath(const QString&) -> QString;
             static Meshes* instance;
@@ -36,6 +37,7 @@ namespace quick {
             auto getASTL() -> QString;
             auto getBOBJ() -> QString;
             auto getBSTL() -> QString;
+            auto getUnstructuredGrid() -> QString;
         };
     }
 }
