@@ -13,8 +13,6 @@ Item {
         anchors.fill: parent;
         
         mouseEnabled: true;
-		Vtk.OrientationMarkerWidget {
-		}
         Vtk.Actor {
             Vtk.DataSetMapper {
 				id: dataSetMapper
@@ -23,5 +21,24 @@ Item {
                 }
             }
         }
+		Vtk.ScalarBarActor {
+			id:barActor
+			numberOfLabels: 4
+			title: "title"
+		}
     }
+	
+	List.FloatArray {
+		id: scalars
+		numberOfValues:100
+	}	
+	Vtk.LookupTable {
+		id:lookupid
+	}
+	Component.onCompleted : {
+		scalars.numberOfValues = dataSetMapper.numberOfPoints
+		barActor.lookupTable = lookupid
+		barActor.lookupTable = lookupid
+		dataSetMapper.scalars = scalars
+	}
 }
