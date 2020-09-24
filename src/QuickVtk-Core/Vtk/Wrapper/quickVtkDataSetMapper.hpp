@@ -19,6 +19,7 @@ namespace quick {
             LookupTable* m_loopTable = nullptr;
         public:
             DataSetMapper();
+            ~DataSetMapper();
             auto getLookupTable()->LookupTable*;
             auto setLookupTable(LookupTable*)->void;
             auto getNumberOfPoints()->qlonglong;

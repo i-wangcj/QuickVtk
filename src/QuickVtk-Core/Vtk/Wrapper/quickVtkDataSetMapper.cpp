@@ -4,6 +4,7 @@
 
 #include <vtkAlgorithm.h>
 #include <vtkPointData.h>
+#include <vtkDataArray.h>
 
 namespace quick {
     namespace Vtk {
@@ -11,9 +12,16 @@ namespace quick {
         Qml::Register::Class<DataSetMapper> DataSetMapper::Register(true);
 
         DataSetMapper::DataSetMapper() : Mapper(vtkSmartPointer<vtkDataSetMapper>::New()) {
+            m_loopTable = new LookupTable();
+        }
+
+        DataSetMapper::~DataSetMapper() {
+            delete m_loopTable;
+            m_loopTable = nullptr;
         }
 
         auto DataSetMapper::getLookupTable()->LookupTable* {
+            this->m_loopTable->setVtkObject(dynamic_cast<vtkLookupTable*>(this->getVtkObject()->GetLookupTable()));
             return this->m_loopTable;
         }
 

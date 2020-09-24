@@ -20,6 +20,9 @@ namespace quick {
         auto LookupTable::getVtkObject() -> vtkSmartPointer<vtkLookupTable> {
             return this->m_vtkObject;
         }
+        void LookupTable::setVtkObject(vtkSmartPointer<vtkLookupTable> table) {
+            this->m_vtkObject = table;
+        }
 
         LookupTable::~LookupTable() {
 
