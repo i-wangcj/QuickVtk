@@ -24,7 +24,8 @@ Item {
 		Vtk.ScalarBarActor {
 			id:barActor
 			numberOfLabels: 4
-			title: "title"
+			title: "color"
+			maximumWidthInPixels:50
 		}
     }
 	

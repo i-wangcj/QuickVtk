@@ -13,6 +13,8 @@ namespace quick {
             Q_PROPERTY(QString title READ getTitle WRITE setTitle);
             Q_PROPERTY(quick::Vtk::LookupTable* lookupTable READ getLookupTable WRITE setLookupTable NOTIFY lookupTableChanged);
             Q_PROPERTY(int  numberOfLabels READ getNumberOfLabels WRITE setNumberOfLabels);
+            Q_PROPERTY(int  maximumWidthInPixels READ getMaximumWidthInPixels WRITE setMaximumWidthInPixels);
+            Q_PROPERTY(int  maximumHeightInPixels READ getMaximumHeightInPixels WRITE setMaximumHeightInPixels);
         private:
             static Qml::Register::Class<ScalarBarActor> Register;
             vtkSmartPointer<vtkScalarBarActor> m_vtkObject = nullptr;
@@ -28,6 +30,11 @@ namespace quick {
             auto setLookupTable(LookupTable*)->void;
             auto getTitle()->QString;
             auto setTitle(QString)->void;
+            auto getMaximumWidthInPixels() ->int;
+            auto setMaximumWidthInPixels(int) -> void;
+            auto getMaximumHeightInPixels() ->int;
+            auto setMaximumHeightInPixels(int) -> void;
+
         signals:
             void lookupTableChanged();
         };

@@ -51,5 +51,26 @@ namespace quick {
             this->update();
         }
 
+        auto getMaximumWidthInPixels() ->int;
+        auto setMaximumWidthInPixels(int) -> void;
+        auto getMaximumHeightInPixels() ->int;
+        auto setMaximumHeightInPixels(int) -> void;
+        auto ScalarBarActor::getMaximumWidthInPixels()->int {
+            return this->m_vtkObject->GetMaximumWidthInPixels();
+        }
+
+        auto ScalarBarActor::setMaximumWidthInPixels(int w)->void {
+            this->m_vtkObject->SetMaximumWidthInPixels(w);
+            this->update();
+        }
+
+        auto ScalarBarActor::getMaximumHeightInPixels()->int {
+            return this->m_vtkObject->GetMaximumHeightInPixels();
+        }
+
+        auto ScalarBarActor::setMaximumHeightInPixels(int h)->void {
+            this->m_vtkObject->SetMaximumHeightInPixels(h);
+            this->update();
+        }
     }
 }
