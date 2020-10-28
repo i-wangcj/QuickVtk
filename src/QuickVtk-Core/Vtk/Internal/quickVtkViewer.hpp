@@ -34,6 +34,7 @@ namespace quick {
             ~Viewer();
             Renderer *createRenderer() const override;
             vtkGenericOpenGLRenderWindow* GetRenderWindow() const;
+            Q_INVOKABLE void resetCamera();
         public:
             virtual auto init() -> void;
             auto update() -> void;

@@ -137,6 +137,13 @@ namespace quick {
             return m_win;
         }
 
+        void Viewer::resetCamera() {
+            if (m_renderer) {
+                m_renderer->ResetCamera();
+            }
+            this->update();
+        }
+
         auto Viewer::getInput() -> QQmlListProperty<quick::Vtk::Object> {
             return QQmlListProperty<quick::Vtk::Object>(this, 0, &appendInput, &inputCount, &inputAt, &clearInputs);
         }
