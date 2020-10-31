@@ -65,8 +65,6 @@ namespace quick {
                 }
             }
 
-            this->m_renderer->ResetCamera();
-
             this->update();
         }
         
