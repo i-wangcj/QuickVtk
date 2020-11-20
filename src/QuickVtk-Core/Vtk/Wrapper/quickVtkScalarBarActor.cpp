@@ -72,5 +72,9 @@ namespace quick {
             this->m_vtkObject->SetMaximumHeightInPixels(h);
             this->update();
         }
+
+        void ScalarBarActor::setDisplayPosition(int x, int y) {
+            this->m_vtkObject->SetDisplayPosition(x, y);
+        }
     }
 }

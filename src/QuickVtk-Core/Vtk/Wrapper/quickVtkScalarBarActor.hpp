@@ -34,6 +34,7 @@ namespace quick {
             auto setMaximumWidthInPixels(int) -> void;
             auto getMaximumHeightInPixels() ->int;
             auto setMaximumHeightInPixels(int) -> void;
+            Q_INVOKABLE void setDisplayPosition(int, int);
 
         signals:
             void lookupTableChanged();
