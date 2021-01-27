@@ -33,6 +33,9 @@ namespace quick {
             auto getTexture() -> Texture*;
             auto getVtkObject() -> vtkSmartPointer<vtkActor>;
             ~Actor();
+
+            Q_INVOKABLE void setRotateWXYZ(double angle, double x, double y, double z);
+
         signals:
             void mapperChanged();
         };

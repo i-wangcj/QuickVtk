@@ -35,6 +35,7 @@ namespace quick {
             Renderer *createRenderer() const override;
             vtkGenericOpenGLRenderWindow* GetRenderWindow() const;
             Q_INVOKABLE void resetCamera();
+            Q_INVOKABLE void setViewDireciton(double x, double y, double z, const std::string direction = "front");
         public:
             virtual auto init() -> void;
             auto update() -> void;

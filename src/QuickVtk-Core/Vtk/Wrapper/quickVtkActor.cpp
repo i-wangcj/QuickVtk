@@ -48,5 +48,10 @@ namespace quick {
         Actor::~Actor() {
             delete this->m_property;
         }
+
+        void Actor::setRotateWXYZ(double angle, double x, double y, double z) {
+            this->m_vtkObject->RotateWXYZ(angle, x, y, z);
+            this->update();
+        }
     }
 }

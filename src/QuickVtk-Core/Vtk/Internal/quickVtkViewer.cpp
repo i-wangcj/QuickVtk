@@ -16,6 +16,7 @@
 #include <vtkObjectFactory.h>
 #include <vtkSmartPointer.h>
 #include <vtkRenderer.h>
+#include <vtkCamera.h>
 
 namespace quick {
     namespace Vtk {
@@ -140,6 +141,41 @@ namespace quick {
                 m_renderer->ResetCamera();
             }
             this->update();
+        }
+
+        void Viewer::setViewDireciton(double x, double y, double z, const std::string direction) {
+
+            vtkCamera*  cam = m_renderer->GetActiveCamera();
+            if (!cam) {
+                return;
+            }
+
+            cam->SetPosition(x, y, z);
+            cam->SetFocalPoint(250, 250, -130);
+
+            if (direction == "front") {
+                cam->SetViewUp(0, 1, 0);
+            }
+            else if (direction == "back") {
+                cam->SetViewUp(0, 1, 0);
+            }
+            else if (direction == "up") {
+                cam->SetViewUp(0, 0, 1);
+            }
+            else if (direction == "down") {
+                cam->SetViewUp(0, 0, 1);
+            }
+            else if (direction == "left") {
+                cam->SetViewUp(0, 0, 1);
+            }
+            else if (direction == "right") {
+                cam->SetViewUp(0, 0, 1);
+            }
+            cam->SetViewAngle(30);
+            cam->SetEyeAngle(2.0);
+            cam->SetFocalDisk(1.0);
+            cam->SetDistance(0);
+            this->resetCamera();
         }
 
         auto Viewer::getInput() -> QQmlListProperty<quick::Vtk::Object> {
