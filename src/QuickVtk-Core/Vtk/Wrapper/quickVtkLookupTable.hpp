@@ -17,6 +17,7 @@ namespace quick {
 			~LookupTable();
 			auto getVtkObject()->vtkSmartPointer<vtkLookupTable>;
 			Q_INVOKABLE void setVtkObject(vtkSmartPointer<vtkLookupTable>);
+			Q_INVOKABLE void setHueRange(const float s, const float e);
 		};
 	}
 }

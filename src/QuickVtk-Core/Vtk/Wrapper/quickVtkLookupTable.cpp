@@ -24,6 +24,10 @@ namespace quick {
             this->m_vtkObject = table;
         }
 
+        void LookupTable::setHueRange(const float s, const float e) {
+            this->m_vtkObject->SetHueRange(s, e);
+        }
+
         LookupTable::~LookupTable() {
 
         }
